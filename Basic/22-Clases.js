@@ -82,3 +82,45 @@ class GetSetPerson{
 let person6 = new GetSetPerson('Paul',27,'ZWarking','dawdasd')
 console.log(person6.name)
 person6.bank='new 13465'
+
+//Herencias
+class Animal{
+    constructor(name){
+        this.name=name
+    }
+    sound(){
+        console.log('Sonido generico')
+    }
+}
+
+class Dog extends Animal{//extends usa la clase general para heredar
+    sound(){
+        console.log('Woof')
+    }
+
+    run(){
+        console.log('El perro corre')
+    }
+}
+class Fish extends Animal{
+    constructor(name,size){
+        super(name) //usa el de la superclase
+        this.size=size
+    }
+    swim(){
+        console.log('El pez nada')
+    }
+}
+let myDog = new Dog('Pelusa')
+let myFish = new Fish('Nemo',15)
+myDog.sound()
+myDog.run()
+myFish.swim()
+
+//Metodos estaticos
+class MathOperations{
+    static suma(a,b){//ya no es necesario crear una variable para invocar la funcion
+        return a+b
+    }
+}
+console.log(MathOperations.suma(5,15))
