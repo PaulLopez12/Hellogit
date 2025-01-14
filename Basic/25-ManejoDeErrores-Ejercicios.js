@@ -72,31 +72,49 @@ let object ={
 }
 
 class errorObjeto extends Error{
-    constructor(message,p1,p2){
+    constructor(message,propertyName,objectName){
         super(message)
-        this.p1=p1
-        this.p2=p2
-    }
-    printPropertys(){
-        console.log(`Las propiedades son ${this.p1}, ${this.p2}`)
+        this.propertyName=propertyName
+        this.objectName=objectName
     }
 }
 
-function esPropiedad(propiedad){
-    for(let propiedad in object){
-        if(!(typeof propiedad == String)){
-            throw new TypeError('Ingresa la propiedad en formato cadena.')
-        }
-        else{
-            throw new errorObjeto('El objeto no tiene la propiedad')
-        }
+function esPropiedad(obj,propertyName,objectName='objeto'){
+    if(obj === null || obj === undefined){
+        throw new errorObjeto(propertyName, 'null/undefined')
     }
+    if(obj.hasOwnProperty(propertyName)){
+        return true
+    }
+    throw new errorObjeto(propertyName, objectName)
 }
-esPropiedad('2')
+esPropiedad(object,2,'hola')
+
 //10.Crea una funcion que realice reintentos en caso de un error hasta un maximo de 10
-function tryAgain(){
-    contador=0
-    while(contador<10){
-        contador++
+async function tryAgain(fn, options={}){
+    const{
+        maxIntentos=10,
+        again=null
+    } = options
+    let lastError
+    for(let attempt=1;attempt<=maxIntentos;attempt++){
+        try{
+            return await fn()
+        }catch(error){
+            lastError=error
+            if(attempt==maxIntentos){
+                throw new Error(`Error despues de ${maxIntentos} intentos.
+                    Ultimo error: ${error.message}`)
+            }
+            if(again){
+                again({
+                    error,
+                    attempt,
+                    remainingAttempts: maxIntentos-attempt,
+                    waitTime
+                })
+            }
+            await new Promise(resolve => setTimeout(resolve,waitTime))
+        }
     }
 }
