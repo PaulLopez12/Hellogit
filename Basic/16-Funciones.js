@@ -8,7 +8,7 @@ function myFuncion() {
 myFuncion();
 
 //Con parametros
-function myFuncion2(nombre) {
+export function myFuncion2(nombre) {
     console.log("Hola " + nombre);
 }
 myFuncion2("Paul");

@@ -1,5 +1,5 @@
 //Clases (plantillas de objetos)
-class Person{
+export class Person{
     constructor(name,age,alias){
         this.name = name
         this.age = age

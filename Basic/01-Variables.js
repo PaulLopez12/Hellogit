@@ -14,7 +14,7 @@ console.log(helloWorld2)
 
 //const (Es una vairable que no se puede modificar)
 
-const helloWorld3 = '!Hola JavaScript3¡'
+export const helloWorld3 = '!Hola JavaScript3¡'
 console.log(helloWorld3)
 
 /*helloWorld3 = '!Hola de nuevo, JavaScript3¡'
