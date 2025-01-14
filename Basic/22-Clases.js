@@ -1,5 +1,5 @@
 //Clases (plantillas de objetos)
-export class Person{
+export default class Person{
     constructor(name,age,alias){
         this.name = name
         this.age = age
@@ -27,7 +27,7 @@ console.log(person3)
 //Acceson a propiedades
 console.log(person3.name)
 console.log(person3['alias'])
-person3,alias='ZWarking'
+person3.alias='ZWarking'
 console.log(person3.alias)
 
 //Funciones en clases

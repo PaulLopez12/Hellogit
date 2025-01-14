@@ -8,7 +8,7 @@ function myFuncion() {
 myFuncion();
 
 //Con parametros
-export function myFuncion2(nombre) {
+export default function myFuncion2(nombre) {
     console.log("Hola " + nombre);
 }
 myFuncion2("Paul");
@@ -47,7 +47,7 @@ function externa() {
 externa();
 
 //Funciones de orden superior (recibe una funcion como parametro)
-function myFuncion5(callback) {
+export function myFuncion5(callback) {
     callback();
 }
 myFuncion5(function () {
@@ -55,7 +55,7 @@ myFuncion5(function () {
 });
 
 //forEach
-myArray = [1, 2, 3, 4, 5];
+let myArray = [1, 2, 3, 4, 5];
 myArray.forEach(function (elemento) {
     console.log(elemento);
 });

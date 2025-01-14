@@ -1,7 +1,3 @@
-import  {helloWorld3}  from "./01-Variables.js";
-import  {myFuncion2} from "./16-Funciones.js";
-import  {Person}  from "./22-Clases.js";
-
 //1.Exporta una funcion
 //2.Exporta una constante
 //3.Exporta una clase
@@ -44,6 +40,10 @@ console.log(resta(3,5))
 
 
 //10.Importa una funcion, constante y clase desde un directorio diferente al anterior
+import  {helloWorld3}  from "./01-Variables.js";
+import  {myFuncion2} from "./16-Funciones.js";
+import  {Person}  from "./22-Clases.js";
+
 console.log(helloWorld3)
 myFuncion2('Paul')
 let person = new Person('Paul',27,'ZWarking')
