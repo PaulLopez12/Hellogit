@@ -31,3 +31,62 @@ class Animal {
 }
 
 // - Polimorfismo
+class Cat extends Animal {
+    constructor(name){
+        super(name)
+    }
+    makeSound(){
+        console.log('Miau')
+    }
+}
+
+class Dog extends Animal {
+    constructor(name){
+        super(name)
+    }
+    makeSound(){
+        console.log('Guau')
+    }
+}
+
+const cat = new Cat("Pelusa")
+console.log(cat)
+cat.makeSound()
+
+const dog = new Dog("Masha")
+console.log(dog)
+dog.makeSound()
+
+// - Mixins
+const FlyMixin = {
+    fly(){
+        console.log(`${this.name} está volando`)
+    }
+}
+
+class Bird extends Animal {
+    constructor(name){
+        super(name)
+    }
+
+}
+
+class Dragon extends Animal {
+    constructor(name){
+        super(name)
+    }
+    
+}
+
+Object.assign(Bird.prototype, FlyMixin)
+Object.assign(Dragon.prototype, FlyMixin)
+
+const bird = new Bird("Pajaro")
+console.log(bird.name)
+bird.fly()
+
+const dragon = new Dragon("Dragon")
+console.log(dragon.name)
+dragon.fly() 
+
+// - Singleton
