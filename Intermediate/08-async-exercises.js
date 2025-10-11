@@ -1,17 +1,101 @@
 // 1. Crea una función para saludar que reciba un nombre y un callback. 
 //    El callback debe ejecutarse después de 2 segundos y mostrar en consola "Hola, [nombre]".
+function greet(name, callback){
+    setTimeout(() =>{
+        console.log(`Hola, ${name}`)
+        callback()
+    },2000)
+}
+greet('Paul', () => {
+    console.log('Saludo realizado')
+})
 
 // 2. Crea tres funciones task1(callback), task2(callback) y task3(callback). 
 //    Cada función debe tardar 1 segundo en ejecutarse y luego llamar al callback.
+function task1(callback){
+    setTimeout(() => {
+        console.log('Tarea 1 completada')
+        callback()
+    },1000)
+}
+
+function task2(callback){
+    setTimeout(() => {
+        console.log('Tarea 2 completada')
+        callback()
+    },1000)
+}
+
+function task3(callback){
+    setTimeout(() => {
+        console.log('Tarea 3 completada')
+        callback()
+    },1000)
+}
+
+task1(() => {
+    task2(() => {
+        task3(() => {
+            console.log('Todas las tareas completadas')
+        })
+    })
+})
 
 // 3. Crea una función para verificar un número que retorne una Promesa. 
 //    Si el número es par, la promesa se resuelve con el mensaje "Número par". 
 //    Si el número es impar, la promesa se rechaza con el mensaje "Número impar".
+function checkNumber(num){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(num % 2 === 0){
+                resolve('Número par')
+            }
+            else{
+                reject('Número impar')
+            }
+        }, 4000)
+    })
+}
+checkNumber(4)
+.then(result => console.log(result))
+.catch(error => console.log(error))
 
 // 4. Crea tres funciones que devuelvan promesas:
 //    firstTask(): tarda 1s y muestra "Primera tarea completada".
 //    secondTask(): tarda 2s y muestra "Segunda tarea completada".
 //    thirdTask(): tarda 1.5s y muestra "Tercera tarea completada".
+function firstTask(){
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('Primera tarea completada')
+            resolve()
+        },5000)
+    })
+}
+
+function secondTaskTask(){
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('Segunda tarea completada')
+            resolve()
+        },7000)
+    })
+}
+
+function thirdTask(){
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('Tercera tarea completada')
+            resolve()
+        },8.5000)
+    })
+}
+firstTask()
+.then(secondTaskTask)
+.then(thirdTask)
+.then(() => {
+    console.log('Todas las tareas completadas')
+})
 
 // 5. Transforma el ejercicio anterior de Promesas en una función async/await llamada 
 //    executeTasks().
