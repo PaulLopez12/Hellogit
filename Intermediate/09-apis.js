@@ -67,3 +67,59 @@ createPost()
 //1. postman
 //2. apidog
 //3. Thunder Client (extension vscode)
+
+// Manejo de errores
+fetch("https://jsonplaceholder.typicode.com/añañin")
+.then(response => {
+    if(!response.ok){
+        throw Error(`Status HTTP: ${response.status}`)
+    }
+    return response.json()
+})
+.catch(error => {
+    console.log("Error:", error) //captura errores
+})
+
+// Métodos HTTP adicionales 
+// - PATCH: actualizar parcialmente un recurso
+// - OPTIONS: consulta métodos HTTP permitidos para un recurso
+
+async function partialPostUpdate(){
+    try{
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts/10", {
+            method: "PATCH",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({tittle: "Este es el nuevo titulo de mi post"})
+        })
+        const data = await response.json()
+        console.log(data)
+    }catch(error){
+            console.log("Error: ", error)
+        }
+}
+partialPostUpdate()
+
+// Autenticacion mediante API Key
+/* 
+ * API Key: f5acfeb8de55fe4bf51f3c4f34eac89d 
+ ** URl: https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
+*/
+
+
+async function getWeather(city) {
+    const apiKey = "f5acfeb8de55fe4bf51f3c4f34eac89d"
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+    
+        try{
+            const response = await fetch(url)
+            const data = await response.json()
+            console.log(data)
+        }catch(error){
+            console.log("Error: ", error)
+        }
+}
+getWeather("Madrid")
+
+// Otros métodos de Autenticación y Autorización
