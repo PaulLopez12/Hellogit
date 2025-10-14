@@ -123,3 +123,26 @@ async function getWeather(city) {
 getWeather("Madrid")
 
 // Otros métodos de Autenticación y Autorización
+// - Bearer Tokens
+// - JWT
+
+// Versionado de APIs
+// - https://api.example.com/v1/resources
+// - https://api.example.com/v2/resources
+
+// Otras APIs
+// - Pokeapi
+async function getPokemon(pokemon) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+        try{
+            const response = await fetch(url)
+            const data = await response.json()
+            console.log(`Habilidades de ${data.name}:`)
+            data.abilities.forEach(ability => {
+                console.log(ability.ability.name)
+            });
+        }catch(error){
+            console.log("Error: ", error)
+        }
+}
+getPokemon("pikachu")
