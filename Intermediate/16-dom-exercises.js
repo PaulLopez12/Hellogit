@@ -48,9 +48,25 @@ content.innerHTML = "<h2>Nuevo contenido</h2>"
 
 // 8. Crea un botón con id="greetBtn" y añade un evento que muestre una alerta con el 
 // mensaje "¡Hola!" al hacer clic
+const greetBtn = document.getElementById("greetBtn")
+greetBtn.addEventListener("click", () => {
+    alert("Hola!")
+})
 
 // 9. Crea un <input id="textInput"> y un <div id="result">. Al escribir en el input, 
 // el <div> se debe actualizarse mostrando lo que se escribe
+const textInput = document.getElementById("textInput")
+const result = document.getElementById("result")
+
+textInput.addEventListener("input", () => {
+    result.textContent = textInput.value
+})
 
 // 10. Crea un botón con id="backgroundBtn" y, al hacer clic, cambia el color de fondo 
 // del <body> a un color diferente
+const backgroundBtn = document.getElementById("backgroundBtn")
+const body = document.getElementById("body")
+
+backgroundBtn.addEventListener("click", () => {
+    body.style.backgroundColor = "green"
+})
