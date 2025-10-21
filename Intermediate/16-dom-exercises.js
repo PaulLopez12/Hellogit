@@ -36,9 +36,15 @@ button.addEventListener("click", addTask)
 
 // 6. Crea un párrafo con id="deleteParagraph" y un botón. Al hacer clic en el botón, 
 // elimina el párrafo del DOM
-
+const eraseButton = document.getElementById("eraseButton")
+const paragraph2 = document.getElementById("deleteParagraph")
+eraseButton.addEventListener("click", () => {
+    paragraph2.remove()
+})
 // 7. Crea un <div id="content"> con algún texto y reemplaza su contenido por un <h2> 
 // con el mensaje "Nuevo Contenido"
+const content = document.getElementById("content")
+content.innerHTML = "<h2>Nuevo contenido</h2>"
 
 // 8. Crea un botón con id="greetBtn" y añade un evento que muestre una alerta con el 
 // mensaje "¡Hola!" al hacer clic
