@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\Intermediate\\18-debugging.js"
+            "program": "${workspaceFolder}\\Intermediate\\19-debugging-exercises.js"
         }
     ]
 }
